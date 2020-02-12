@@ -7,18 +7,19 @@ let albumModel = mongoose.model("album");
 增加记录
  */
 function addAlbum(album, callback) {
-    albumModel.create(album, function (error, doc) {
-        if (!error) callback(doc);
-        else callback(null);
+    albumModel.create(album, function (err, doc) {
+        if (!err) callback(doc);
+        else console.log(err);
     })
 }
 
 /*
-查询记录
+查询所有记录
  */
-function findAlbum(callback) {
-    albumModel.find({}).exec(function () {
-
+function findAllAlbum(callback) {
+    albumModel.find({}).exec(function (err, docs) {
+        if(!err) callback(docs);
+        else callback(null)
     })
 }
 
