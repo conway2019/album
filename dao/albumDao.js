@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 require("../model/index");
-
 let albumModel = mongoose.model("album");
 
 /*
@@ -18,21 +17,27 @@ function addAlbum(album, callback) {
  */
 function findAllAlbum(callback) {
     albumModel.find({}).exec(function (err, docs) {
-        if(!err) callback(docs);
-        else callback(null)
+        if (!err) callback(docs);
+        else console.log(err);
     })
 }
 
 /*
 更新记录
  */
-function updateAlbum(album, callback) {
-
+function updateAlbum(id, callback) {
+    albumModel.findByIdAndUpdate(id, function (err, doc) {
+        if (!err) callback(doc);
+        else console.log(err);
+    })
 }
 
 /*
 删除记录
  */
-function deleteAlbum(album, callback) {
-
+function deleteAlbum(id, callback) {
+    albumModel.findByIdAndRemove(id, function (err, doc) {
+        if (!err) callback(doc)
+        else console.log(err);
+    })
 }
