@@ -2,3 +2,36 @@ GET http://localhost:3000/album
 Accept: application/json
 
 ###
+
+POST http://localhost:3000/album
+Content-Type: application/json
+
+{
+  "album_id": "3751508",
+  "album_name": "A.I. 爱",
+  "public_time": "2017-12-11",
+  "week": 50,
+  "price": 89,
+  "cover": "http://imgcache.qq.com/music/photo/album_300/08/300_albumpic_3751508_0.jpg",
+  "singers": [
+    {
+      "singer_id": "265",
+      "singer_name": "王力宏"
+    }
+  ]
+}
+
+
+###
+
+DELETE http://localhost:3000/album/5e4897cbd64c64d294366df3
+Accept: application/json
+
+###
+
+POST http://localhost:3000/album/update
+Content-Type: application/json
+
+{}
+
+###

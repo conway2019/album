@@ -1,30 +1,30 @@
 const mongoose = require("mongoose");
 
 //专辑
-let albumSchema = new Schema({
-    album_id: String,
-    album_name: String,
-    public_time: Date,
-    week: number,
-    price: number,
-    cover: String,
-    singer_id: String
+let AlbumSchema = new mongoose.Schema({
+    id: String,
+    name: String,
+    memo: String,
+    songs: []
 });
-mongoose.model("album", albumSchema);
 
 //歌手
-let singerSchema = new Schema({
-    singer_id: String,
-    singer_name: String,
-    singer_memo: String,
+let SingerSchema = new mongoose.Schema({
+    id: String,
+    name: String,
+    memo: String,
+    songs:[]
 });
-mongoose.model("singer", singerSchema);
 
-//注册用户
-var userSchema = new Schema({
-    user_id: String,
-    user_name: String,
-    user_role: Number,
-    user_memo: String
+//用户
+let UserSchema = new mongoose.Schema({
+    id: String,
+    name: String,
+    password: String,
+    telephone: String,
+    mail: String
 });
-mongoose.model("user", userSchema);
+
+mongoose.model("album", AlbumSchema);
+mongoose.model("singer", SingerSchema);
+mongoose.model("user", UserSchema);

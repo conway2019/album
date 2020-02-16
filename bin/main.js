@@ -8,7 +8,7 @@ var app = require('../app');
 var debug = require('debug')('album:server');
 var http = require('http');
 var mongoose = require('mongoose')
-const mongoUrl = "mongodb://106.54.230.45:27017/album";
+const mongoUrl = "mongodb://106.54.230.45:27017/music";
 
 /**
  * Get port from environment and store in Express.
@@ -25,13 +25,17 @@ let server = http.createServer(app)
 
 //连接mongodb
 mongoose.connect(mongoUrl, function (err) {
-    if (err) console.log("mongodb连接失败！");
+    if (err) {
+        console.log("mongodb连接失败！");
+        console.log(err);
+    }
     else {
         console.log("mongodb连接成功！");
         /**
          * Listen on provided port, on all network interfaces.
          */
         server.listen(port);
+        console.log("监听" + port)
     }
 })
 
